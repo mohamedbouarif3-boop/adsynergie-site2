@@ -119,21 +119,51 @@ export default function App() {
 </section>
 
 
-        {/* MÉTHODE */}
-        <section id="process" className="py-16">
-          <h2 className="text-3xl font-bold text-center">Notre méthode</h2>
-          <div className="mt-8 grid sm:grid-cols-3 gap-6">
-            <Card title="1 · Audit & plan">
-              <p className="mt-2">On identifie les opportunités locales et on définit un plan d’action clair.</p>
-            </Card>
-            <Card title="2 · Conception & build">
-              <p className="mt-2">Maquettes rapides, contenus, intégration et optimisation des performances.</p>
-            </Card>
-            <Card title="3 · Lancement & suivi">
-              <p className="mt-2">Mise en ligne, tracking, A/B tests légers et itérations mensuelles.</p>
-            </Card>
-          </div>
-        </section>
+       {/* MÉTHODE */}
+<section id="process" className="py-16">
+  <h2 className="text-3xl font-bold text-center">Notre méthode</h2>
+  <p className="text-center text-slate-600 mt-3 max-w-2xl mx-auto">
+    Chez AdSynergie, chaque campagne est unique. On ne vend pas du volume — on construit du sur-mesure pour générer des leads exclusifs et traçables.
+  </p>
+
+  <div className="mt-10 grid sm:grid-cols-3 gap-6">
+    {/* Étape 1 */}
+    <Card title="1 · Analyse & stratégie">
+      <p className="mt-2">
+        On étudie votre marché, vos concurrents et votre offre. Puis on définit une stratégie adaptée à votre secteur pour maximiser la performance dès le lancement.
+      </p>
+      <ul className="mt-3 space-y-2 text-sm">
+        <li className="flex items-start gap-2"><Check className="w-4 h-4 text-brand-teal"/> Étude du secteur et ciblage local</li>
+        <li className="flex items-start gap-2"><Check className="w-4 h-4 text-brand-teal"/> Positionnement et budget optimal</li>
+      </ul>
+    </Card>
+
+    {/* Étape 2 */}
+    <Card title="2 · Création & personnalisation">
+      <p className="mt-2">
+        On crée des campagnes uniques à votre image : visuels, vidéos personnalisées, logo intégré et témoignages clients si besoin. Chaque contenu reflète votre marque.
+      </p>
+      <ul className="mt-3 space-y-2 text-sm">
+        <li className="flex items-start gap-2"><Check className="w-4 h-4 text-brand-teal"/> Vidéo dédiée avec votre logo</li>
+        <li className="flex items-start gap-2"><Check className="w-4 h-4 text-brand-teal"/> Témoignages clients & éléments réels</li>
+        <li className="flex items-start gap-2"><Check className="w-4 h-4 text-brand-teal"/> LED, visuels et annonces sur mesure</li>
+      </ul>
+    </Card>
+
+    {/* Étape 3 */}
+    <Card title="3 · Leads exclusifs & suivi">
+      <p className="mt-2">
+        Les leads générés sont 100% à vous — aucun partage, aucune revente. Vous recevez un rapport clair sur les performances et le ROI de votre campagne.
+      </p>
+      <ul className="mt-3 space-y-2 text-sm">
+        <li className="flex items-start gap-2"><Check className="w-4 h-4 text-brand-teal"/> Leads exclusifs et vérifiés</li>
+        <li className="flex items-start gap-2"><Check className="w-4 h-4 text-brand-teal"/> Reporting transparent (clics, conversions, coût)</li>
+        <li className="flex items-start gap-2"><Check className="w-4 h-4 text-brand-teal"/> Optimisation continue sur la durée</li>
+      </ul>
+    </Card>
+  </div>
+</section>
+
 
         {/* TARIFS */}
         <section id="pricing" className="py-16">
