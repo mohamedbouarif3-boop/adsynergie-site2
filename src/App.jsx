@@ -51,51 +51,73 @@ export default function App() {
           </div>
         </section>
 
-        {/* SERVICES */}
-        <section id="services" className="py-16">
-          <h2 className="text-3xl font-bold text-center">Nos services</h2>
-          <div className="mt-8 grid sm:grid-cols-3 gap-6">
-            <Card title="Site web pro">
-              <ul className="space-y-2">
-                {[
-                  "Design moderne et responsive",
-                  "Performances & SEO technique",
-                  "CMS simple (édition de contenu)",
-                ].map((t) => (
-                  <li key={t} className="flex items-start gap-2">
-                    <Check className="w-4 h-4 mt-1 text-brand-teal" /> {t}
-                  </li>
-                ))}
-              </ul>
-            </Card>
-            <Card title="Identité visuelle">
-              <ul className="space-y-2">
-                {[
-                  "Logo & palette cohérente",
-                  "Guidelines d’utilisation",
-                  "Déclinaisons réseaux sociaux",
-                ].map((t) => (
-                  <li key={t} className="flex items-start gap-2">
-                    <Check className="w-4 h-4 mt-1 text-brand-teal" /> {t}
-                  </li>
-                ))}
-              </ul>
-            </Card>
-            <Card title="Acquisition locale">
-              <ul className="space-y-2">
-                {[
-                  "SEO local (Google Business)",
-                  "Campagnes ciblées Leeds",
-                  "Suivi & reporting",
-                ].map((t) => (
-                  <li key={t} className="flex items-start gap-2">
-                    <Check className="w-4 h-4 mt-1 text-brand-teal" /> {t}
-                  </li>
-                ))}
-              </ul>
-            </Card>
-          </div>
-        </section>
+       {/* SERVICES */}
+<section id="services" className="py-16">
+  <h2 className="text-3xl font-bold text-center">Nos services</h2>
+  <p className="text-center text-slate-600 mt-3 max-w-2xl mx-auto">
+    AdSynergie vous accompagne de la génération de prospects à la mise en place d’une vraie présence digitale locale.
+  </p>
+
+  <div className="mt-10 grid sm:grid-cols-3 gap-6">
+    {/* Service 1 */}
+    <Card title="Génération de leads">
+      <p>
+        Vous avez une offre, nous trouvons vos futurs clients. Mise en place de campagnes Google & Meta Ads 
+        ciblées selon votre activité, votre localisation et vos objectifs.
+      </p>
+      <ul className="mt-3 space-y-2 text-sm">
+        <li className="flex items-start gap-2">
+          <Check className="w-4 h-4 mt-1 text-brand-teal" /> Prospects qualifiés dans votre secteur
+        </li>
+        <li className="flex items-start gap-2">
+          <Check className="w-4 h-4 mt-1 text-brand-teal" /> Campagnes Ads prêtes à performer
+        </li>
+        <li className="flex items-start gap-2">
+          <Check className="w-4 h-4 mt-1 text-brand-teal" /> Reporting clair et suivi des résultats
+        </li>
+      </ul>
+    </Card>
+
+    {/* Service 2 */}
+    <Card title="Identité digitale & visibilité">
+      <p>
+        Pour les entreprises qui veulent exister en ligne. Création de votre site, visuels et campagnes publicitaires 
+        locales pour renforcer votre image et attirer du trafic qualifié.
+      </p>
+      <ul className="mt-3 space-y-2 text-sm">
+        <li className="flex items-start gap-2">
+          <Check className="w-4 h-4 mt-1 text-brand-teal" /> Site web moderne & responsive
+        </li>
+        <li className="flex items-start gap-2">
+          <Check className="w-4 h-4 mt-1 text-brand-teal" /> Branding & visuels adaptés à votre activité
+        </li>
+        <li className="flex items-start gap-2">
+          <Check className="w-4 h-4 mt-1 text-brand-teal" /> Publicités locales & campagnes de notoriété
+        </li>
+      </ul>
+    </Card>
+
+    {/* Service 3 */}
+    <Card title="Accompagnement personnalisé">
+      <p>
+        Besoin d’un suivi plus complet ? Nous créons une stratégie sur mesure selon vos besoins : audit, plan média, 
+        suivi de conversion, coaching ou consulting marketing.
+      </p>
+      <ul className="mt-3 space-y-2 text-sm">
+        <li className="flex items-start gap-2">
+          <Check className="w-4 h-4 mt-1 text-brand-teal" /> Audit marketing complet
+        </li>
+        <li className="flex items-start gap-2">
+          <Check className="w-4 h-4 mt-1 text-brand-teal" /> Plan d’action stratégique
+        </li>
+        <li className="flex items-start gap-2">
+          <Check className="w-4 h-4 mt-1 text-brand-teal" /> Service sur devis, 100% personnalisé
+        </li>
+      </ul>
+    </Card>
+  </div>
+</section>
+
 
         {/* MÉTHODE */}
         <section id="process" className="py-16">
