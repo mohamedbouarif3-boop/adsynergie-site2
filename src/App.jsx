@@ -36,8 +36,12 @@ export default function App() {
         {/* HERO */}
         <section className="py-16 sm:py-24 text-center">
           <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight">
-            Faites décoller votre business à Leeds 🚀
-          </h1>
+  Plus de prospects, moins de bla-bla
+</h1>
+<p className="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">
+  Ads ciblées, pages qui convertissent et reporting transparent — chaque action compte.
+</p>
+
           <p className="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">
             Sites web rapides, identité visuelle claire et acquisition locale. Simple, efficace, mesurable.
           </p>
