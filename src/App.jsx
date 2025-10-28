@@ -34,19 +34,15 @@ export default function App() {
 
       <main className="max-w-6xl mx-auto px-4">
         {/* HERO */}
-        <section className="py-16 sm:py-24 text-center">
+          <section className="py-16 sm:py-24 text-center">
           <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight">
-  Plus de prospects, moins de bla-bla
-</h1>
-<p className="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">
-  Ads ciblées, pages qui convertissent et reporting transparent — chaque action compte.
-</p>
-
+          Plus de prospects, moins de bla-bla
+      </h1>
           <p className="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">
-            Sites web rapides, identité visuelle claire et acquisition locale. Simple, efficace, mesurable.
-          </p>
+          Ads ciblées, pages qui convertissent et reporting transparent — chaque action compte.
+        </p>
           <div className="mt-8 flex justify-center gap-4">
-            <a href="#contact" className="inline-flex items-center gap-2 bg-brand-teal hover:bg-brand-tealDark text-white px-5 py-3 rounded-xl font-semibold">
+          <a href="#contact" className="inline-flex items-center gap-2 bg-brand-teal hover:bg-brand-tealDark text-white px-5 py-3 rounded-xl font-semibold">
               Démarrer un projet <ArrowRight className="w-4 h-4" />
             </a>
             <a href="#services" className="inline-flex items-center border border-brand-teal text-brand-teal px-5 py-3 rounded-xl font-semibold hover:bg-brand-teal/10">
