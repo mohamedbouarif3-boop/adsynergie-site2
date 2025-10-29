@@ -1,4 +1,4 @@
-import { ArrowRight, Check, Rocket, Layout, Search, Target, Shield } from "lucide-react";
+import React, { useState, useEffect } from "react";
 
 const BRAND = {
   name: "AdSynergie",
@@ -50,7 +50,6 @@ function TestimonialsSlider() {
   const [paused, setPaused] = useState(false);
   const total = TESTIMONIALS.length;
 
-  // Auto-play
   useEffect(() => {
     if (paused) return;
     const id = setInterval(() => setIndex(i => (i + 1) % total), 3500);
@@ -70,7 +69,6 @@ function TestimonialsSlider() {
       <h2 className="text-3xl font-bold text-center mb-8">Ils en parlent mieux que nous</h2>
 
       <div className="relative max-w-3xl mx-auto">
-        {/* Piste */}
         <div className="overflow-hidden rounded-2xl border border-brand-teal/10 bg-white shadow-sm">
           <div
             className="flex transition-transform duration-500 ease-out"
@@ -85,7 +83,6 @@ function TestimonialsSlider() {
           </div>
         </div>
 
-        {/* Flèches */}
         <button
           onClick={prev}
           className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full border bg-white/90 hover:bg-white px-3 py-2 shadow"
@@ -101,15 +98,12 @@ function TestimonialsSlider() {
           ›
         </button>
 
-        {/* Dots */}
         <div className="flex justify-center gap-2 mt-6">
           {TESTIMONIALS.map((_, i) => (
             <button
               key={i}
               onClick={() => setIndex(i)}
-              className={`h-2 rounded-full transition-all ${
-                index === i ? "w-6 bg-brand-teal" : "w-2 bg-slate-300"
-              }`}
+              className={`h-2 rounded-full transition-all ${index === i ? "w-6 bg-brand-teal" : "w-2 bg-slate-300"}`}
               aria-label={`Aller au témoignage ${i + 1}`}
             />
           ))}
