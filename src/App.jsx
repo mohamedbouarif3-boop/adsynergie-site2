@@ -168,39 +168,62 @@ export default function App() {
 </section>
 
 
-        {/* TARIFS */}
-        <section id="pricing" className="py-16">
-          <h2 className="text-3xl font-bold text-center">Tarifs simples</h2>
-          <div className="mt-8 grid sm:grid-cols-3 gap-6">
-            <div className="p-6 border rounded-2xl bg-white/80">
-              <p className="text-sm font-medium text-slate-500">Starter</p>
-              <p className="text-3xl font-extrabold mt-2">£690</p>
-              <ul className="mt-4 space-y-2 text-sm text-slate-600">
-                <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal"/> One-page vitrine</li>
-                <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal"/> Design sur mesure</li>
-                <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal"/> Formulaire de contact</li>
-              </ul>
-            </div>
-            <div className="p-6 border-2 border-brand-teal rounded-2xl bg-white">
-              <p className="text-sm font-medium text-brand-teal">Business · Recommandé</p>
-              <p className="text-3xl font-extrabold mt-2">£1190</p>
-              <ul className="mt-4 space-y-2 text-sm text-slate-600">
-                <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal"/> 3–5 pages</li>
-                <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal"/> Blog / actualités</li>
-                <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal"/> SEO local + Analytics</li>
-              </ul>
-            </div>
-            <div className="p-6 border rounded-2xl bg-white/80">
-              <p className="text-sm font-medium text-slate-500">Scale</p>
-              <p className="text-3xl font-extrabold mt-2">Sur devis</p>
-              <ul className="mt-4 space-y-2 text-sm text-slate-600">
-                <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal"/> Pages illimitées</li>
-                <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal"/> Intégrations spécifiques</li>
-                <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal"/> Maintenance / CRO</li>
-              </ul>
-            </div>
-          </div>
-        </section>
+       {/* TARIFS */}
+<section id="pricing" className="py-16">
+  <h2 className="text-3xl font-bold text-center">Tarifs & formules</h2>
+  <p className="text-center text-brand-teal font-medium mt-2">
+    Des offres simples, transparentes et pensées pour la performance.
+  </p>
+  <p className="text-center text-slate-600 mt-3 max-w-2xl mx-auto">
+    Chaque projet démarre par une stratégie claire et des objectifs mesurables. 
+    Aucun coût caché, aucun lead partagé.
+  </p>
+
+  <div className="mt-10 grid sm:grid-cols-3 gap-6">
+    {/* Pack 1 */}
+    <div className="p-6 border rounded-2xl bg-white/80">
+      <p className="text-sm font-medium text-slate-500">Pack Leads</p>
+      <p className="text-3xl font-extrabold mt-2">à partir de 1 099 €</p>
+      <ul className="mt-4 space-y-2 text-sm text-slate-600">
+        <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal"/> Acompte de démarrage pour la campagne</li>
+        <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal"/> Création, gestion & suivi de la campagne</li>
+        <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal"/> Leads exclusifs — aucune revente à d’autres sociétés</li>
+        <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal"/> Rapport complet sur la performance et le ROI</li>
+      </ul>
+      <p className="mt-4 text-sm text-slate-500 italic">
+        Pour les entreprises qui veulent des prospects réels, pas des clics.
+      </p>
+    </div>
+
+    {/* Pack 2 */}
+    <div className="p-6 border-2 border-brand-teal rounded-2xl bg-white shadow-sm">
+      <p className="text-sm font-medium text-brand-teal">Pack Visibilité locale</p>
+      <p className="text-3xl font-extrabold mt-2">à partir de 699 €</p>
+      <ul className="mt-4 space-y-2 text-sm text-slate-600">
+        <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal"/> Création de site vitrine rapide & moderne</li>
+        <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal"/> Identité visuelle + publicité locale (Google / Meta)</li>
+        <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal"/> Optimisation SEO de base & suivi de trafic</li>
+      </ul>
+      <p className="mt-4 text-sm text-slate-500 italic">
+        Idéal pour restaurants, commerces et entreprises locales.
+      </p>
+    </div>
+
+    {/* Pack 3 */}
+    <div className="p-6 border rounded-2xl bg-white/80">
+      <p className="text-sm font-medium text-slate-500">Accompagnement personnalisé</p>
+      <p className="text-3xl font-extrabold mt-2">Sur devis</p>
+      <ul className="mt-4 space-y-2 text-sm text-slate-600">
+        <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal"/> Audit complet & stratégie adaptée à votre business</li>
+        <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal"/> Coaching marketing & optimisation des campagnes</li>
+        <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal"/> Accompagnement long terme & reporting mensuel</li>
+      </ul>
+      <p className="mt-4 text-sm text-slate-500 italic">
+        Pour les marques qui veulent aller plus loin.
+      </p>
+    </div>
+  </div>
+</section>
 
         {/* TÉMOIGNAGES (placeholder) */}
         <section className="py-16 text-center">
