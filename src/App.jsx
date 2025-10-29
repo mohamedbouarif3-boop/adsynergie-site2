@@ -168,30 +168,46 @@ export default function App() {
 </section>
 
 
-       {/* TARIFS */}
+      {/* TARIFS */}
 <section id="pricing" className="py-16">
   <h2 className="text-3xl font-bold text-center">Tarifs & formules</h2>
   <p className="text-center text-brand-teal font-medium mt-2">
-    Des offres simples, transparentes et pensées pour la performance.
+    Des campagnes rentables, sans frais cachés — tout est clair dès le départ.
   </p>
   <p className="text-center text-slate-600 mt-3 max-w-2xl mx-auto">
-    Chaque projet démarre par une stratégie claire et des objectifs mesurables. 
-    Aucun coût caché, aucun lead partagé.
+    Chaque pack inclut la création, la gestion et le suivi complet de vos campagnes publicitaires.
+    Les leads générés sont exclusifs à votre entreprise.
   </p>
 
   <div className="mt-10 grid sm:grid-cols-3 gap-6">
     {/* Pack 1 */}
     <div className="p-6 border rounded-2xl bg-white/80">
       <p className="text-sm font-medium text-slate-500">Pack Leads</p>
-      <p className="text-3xl font-extrabold mt-2">à partir de 1 099 €</p>
+      <p className="text-3xl font-extrabold mt-2">1 099 €</p>
       <ul className="mt-4 space-y-2 text-sm text-slate-600">
-        <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal"/> Acompte de démarrage pour la campagne</li>
-        <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal"/> Création, gestion & suivi de la campagne</li>
-        <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal"/> Leads exclusifs — aucune revente à d’autres sociétés</li>
-        <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal"/> Rapport complet sur la performance et le ROI</li>
+        <li className="flex gap-2">
+          <Check className="w-4 h-4 text-brand-teal" />
+          Inclut <strong>600 € de leads exclusifs</strong> selon votre secteur
+        </li>
+        <li className="flex gap-2">
+          <Check className="w-4 h-4 text-brand-teal" />
+          Mise en place complète de la campagne (créa, pub, ciblage)
+        </li>
+        <li className="flex gap-2">
+          <Check className="w-4 h-4 text-brand-teal" />
+          Aucune revente de leads à d’autres sociétés
+        </li>
+        <li className="flex gap-2">
+          <Check className="w-4 h-4 text-brand-teal" />
+          Rapport détaillé sur la performance et le retour sur investissement
+        </li>
+        <li className="flex gap-2">
+          <Check className="w-4 h-4 text-brand-teal" />
+          <strong>Leads supplémentaires</strong> au-delà du budget inclus facturés à l’unité selon le coût convenu
+        </li>
       </ul>
       <p className="mt-4 text-sm text-slate-500 italic">
-        Pour les entreprises qui veulent des prospects réels, pas des clics.
+        Campagne clé en main — création + gestion + 600 € de génération de leads inclus.
       </p>
     </div>
 
@@ -200,12 +216,12 @@ export default function App() {
       <p className="text-sm font-medium text-brand-teal">Pack Visibilité locale</p>
       <p className="text-3xl font-extrabold mt-2">à partir de 699 €</p>
       <ul className="mt-4 space-y-2 text-sm text-slate-600">
-        <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal"/> Création de site vitrine rapide & moderne</li>
-        <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal"/> Identité visuelle + publicité locale (Google / Meta)</li>
-        <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal"/> Optimisation SEO de base & suivi de trafic</li>
+        <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal" /> Création de site vitrine rapide & moderne</li>
+        <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal" /> Publicités locales (Google / Meta) incluses</li>
+        <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal" /> Identité visuelle adaptée à votre commerce</li>
       </ul>
       <p className="mt-4 text-sm text-slate-500 italic">
-        Idéal pour restaurants, commerces et entreprises locales.
+        Idéal pour restaurants, salons, commerces de proximité.
       </p>
     </div>
 
@@ -214,16 +230,21 @@ export default function App() {
       <p className="text-sm font-medium text-slate-500">Accompagnement personnalisé</p>
       <p className="text-3xl font-extrabold mt-2">Sur devis</p>
       <ul className="mt-4 space-y-2 text-sm text-slate-600">
-        <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal"/> Audit complet & stratégie adaptée à votre business</li>
-        <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal"/> Coaching marketing & optimisation des campagnes</li>
-        <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal"/> Accompagnement long terme & reporting mensuel</li>
+        <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal" /> Audit complet de votre stratégie marketing</li>
+        <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal" /> Suivi mensuel, ajustements et reporting détaillé</li>
+        <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal" /> Accompagnement 100 % sur mesure</li>
       </ul>
       <p className="mt-4 text-sm text-slate-500 italic">
-        Pour les marques qui veulent aller plus loin.
+        Pour les entreprises souhaitant une gestion continue et premium.
       </p>
     </div>
   </div>
+
+  <p className="text-center text-slate-500 text-sm mt-10">
+    💡 Tous nos leads sont exclusifs — aucune revente, aucun doublon. Vous gardez 100 % de vos contacts.
+  </p>
 </section>
+
 
         {/* TÉMOIGNAGES (placeholder) */}
         <section className="py-16 text-center">
