@@ -1,6 +1,7 @@
 // src/App.jsx
 import React, { useState, useEffect } from "react";
 import { ArrowRight, Check } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import "./index.css";
 
 /* =======================
@@ -40,18 +41,19 @@ function StarRow({ rating }) {
     </div>
   );
 }
-
 function TestimonialsSlider() {
-  const [index, setIndex] = useState(0);
-  const [paused, setPaused] = useState(false);
+  const [index, setIndex] = React.useState(0);
+  const [paused, setPaused] = React.useState(false);
   const total = TESTIMONIALS.length;
 
-  useEffect(() => {
+  // Auto-play
+  React.useEffect(() => {
     if (paused) return;
     const id = setInterval(() => setIndex((i) => (i + 1) % total), 3500);
     return () => clearInterval(id);
   }, [paused, total]);
 
+  // Navigation manuelle
   const prev = () => setIndex((i) => (i - 1 + total) % total);
   const next = () => setIndex((i) => (i + 1) % total);
 
@@ -62,48 +64,69 @@ function TestimonialsSlider() {
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      <h2 className="text-3xl font-bold text-center mb-8">Ils en parlent mieux que nous</h2>
+      <h2 className="text-3xl font-bold text-center mb-8">
+        Ils en parlent mieux que nous
+      </h2>
 
       <div className="relative max-w-3xl mx-auto">
+        {/* Piste */}
         <div className="overflow-hidden rounded-2xl border border-brand-teal/10 bg-white shadow-sm">
           <div
             className="flex transition-transform duration-500 ease-out"
             style={{ transform: `translateX(-${index * 100}%)` }}
           >
             {TESTIMONIALS.map((t, i) => (
-              <div key={i} className="min-w-full p-8">
+              <div key={i} className="min-w-full p-8 text-center">
                 <StarRow rating={t.rating} />
-                <p className="text-slate-700 text-base italic">“{t.text}”</p>
-                <p className="mt-3 text-sm text-slate-600">
-                  <span className="font-medium text-brand-teal">{t.name}</span> — {t.company}
+                <p className="text-slate-700 text-base italic mb-3">
+                  “{t.text}”
+                </p>
+                <p className="text-sm font-medium text-brand-teal">
+                  {t.author} — {t.company}
                 </p>
               </div>
             ))}
           </div>
         </div>
 
-      <button
-  onClick={prev}
-  className="absolute left-6 top-1/2 -translate-y-1/2 rounded-full border bg-white/90 hover:bg-white px-4 py-2 shadow-md transition-transform hover:scale-110"
-  aria-label="Précédent"
->
-  ‹
-</button>
-<button
-  onClick={next}
-  className="absolute right-6 top-1/2 -translate-y-1/2 rounded-full border bg-white/90 hover:bg-white px-4 py-2 shadow-md transition-transform hover:scale-110"
-  aria-label="Suivant"
->
-  ›
-</button>
+        {/* Flèches — dehors sur desktop, dedans sur mobile */}
+        <button
+          onClick={prev}
+          className="
+            absolute top-1/2 -translate-y-1/2
+            left-2 sm:-left-12
+            z-10 rounded-full border bg-white shadow-md
+            h-9 w-9 grid place-items-center
+            hover:shadow-lg transition
+          "
+          aria-label='Précédent'
+        >
+          <ChevronLeft className='w-5 h-5 text-slate-700' />
+        </button>
 
+        <button
+          onClick={next}
+          className="
+            absolute top-1/2 -translate-y-1/2
+            right-2 sm:-right-12
+            z-10 rounded-full border bg-white shadow-md
+            h-9 w-9 grid place-items-center
+            hover:shadow-lg transition
+          "
+          aria-label='Suivant'
+        >
+          <ChevronRight className='w-5 h-5 text-slate-700' />
+        </button>
 
+        {/* Dots */}
         <div className="flex justify-center gap-2 mt-6">
           {TESTIMONIALS.map((_, i) => (
             <button
               key={i}
               onClick={() => setIndex(i)}
-              className={`h-2 rounded-full transition-all ${index === i ? "w-6 bg-brand-teal" : "w-2 bg-slate-300"}`}
+              className={`h-2 rounded-full transition-all ${
+                index === i ? "w-6 bg-brand-teal" : "w-2 bg-slate-300"
+              }`}
               aria-label={`Aller au témoignage ${i + 1}`}
             />
           ))}
