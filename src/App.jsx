@@ -1,23 +1,27 @@
-// --- IMPORTS ---
+// src/App.jsx
 import React, { useState, useEffect } from "react";
 import { ArrowRight, Check } from "lucide-react";
 import "./index.css";
 
-// --- DONNÉES TÉMOIGNAGES ---
+/* =======================
+   Témoignages (data)
+   ======================= */
 const TESTIMONIALS = [
-  { text: "Excellent retour sur investissement, les leads sont ultra qualifiés.", rating: 5 },
-  { text: "J’ai doublé mes demandes clients en deux semaines, merci AdSynergie !", rating: 5 },
-  { text: "Chaque euro dépensé a été rentable, visibilité x10 en local.", rating: 4 },
-  { text: "Des leads concrets, pas du bla-bla. J’ai signé trois contrats le premier mois.", rating: 5 },
-  { text: "Enfin une agence qui livre du vrai résultat, pas des promesses.", rating: 4 },
-  { text: "Le meilleur investissement pub que j’ai fait depuis que j’ai mon commerce.", rating: 5 },
-  { text: "Les campagnes sont propres, claires, et les leads tombent régulièrement.", rating: 4 },
-  { text: "J’ai gagné plus de clients en 10 jours qu’en 3 mois avant.", rating: 5 },
-  { text: "Rapport qualité / prix imbattable, et les leads sont exclusifs.", rating: 4 },
-  { text: "Ma page Google explose, j’ai une visibilité que j’avais jamais eue avant.", rating: 5 },
+  { text: "Excellent retour sur investissement, les leads sont ultra qualifiés.", rating: 5, name: "Sophie M.", company: "Bella Pasta — Leeds" },
+  { text: "J’ai doublé mes demandes clients en deux semaines, merci AdSynergie !", rating: 5, name: "Karim D.", company: "KD Plomberie" },
+  { text: "Chaque euro dépensé a été rentable, visibilité x10 en local.", rating: 4, name: "Emma W.", company: "MoveEasy Déménagement" },
+  { text: "Des leads concrets, pas du bla-bla. Trois contrats signés le 1er mois.", rating: 5, name: "Lucas R.", company: "LR Coaching" },
+  { text: "Enfin une agence qui livre du vrai résultat, pas des promesses.", rating: 4, name: "Nadia S.", company: "Beauty Lab" },
+  { text: "Le meilleur investissement pub depuis l’ouverture de mon commerce.", rating: 5, name: "Owen T.", company: "Coffee Yard" },
+  { text: "Campagnes propres, claires, et des leads réguliers.", rating: 4, name: "Sarah B.", company: "SB Cleaning" },
+  { text: "Plus de clients en 10 jours qu’en 3 mois avant.", rating: 5, name: "Hassan K.", company: "HK Auto" },
+  { text: "Qualité/prix imbattable, leads exclusifs (zéro revente).", rating: 4, name: "Julie A.", company: "Julie Nails" },
+  { text: "Ma visibilité locale a explosé, c’est concret.", rating: 5, name: "Tom F.", company: "Yorkshire Fit" },
 ];
 
-// --- COMPOSANT ÉTOILES ---
+/* =======================
+   UI témoignages
+   ======================= */
 function StarRow({ rating }) {
   return (
     <div className="flex items-center gap-1 mb-3">
@@ -37,7 +41,6 @@ function StarRow({ rating }) {
   );
 }
 
-// --- SLIDER TÉMOIGNAGES ---
 function TestimonialsSlider() {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -45,12 +48,12 @@ function TestimonialsSlider() {
 
   useEffect(() => {
     if (paused) return;
-    const id = setInterval(() => setIndex(i => (i + 1) % total), 3500);
+    const id = setInterval(() => setIndex((i) => (i + 1) % total), 3500);
     return () => clearInterval(id);
   }, [paused, total]);
 
-  const prev = () => setIndex(i => (i - 1 + total) % total);
-  const next = () => setIndex(i => (i + 1) % total);
+  const prev = () => setIndex((i) => (i - 1 + total) % total);
+  const next = () => setIndex((i) => (i + 1) % total);
 
   return (
     <section
@@ -71,6 +74,9 @@ function TestimonialsSlider() {
               <div key={i} className="min-w-full p-8">
                 <StarRow rating={t.rating} />
                 <p className="text-slate-700 text-base italic">“{t.text}”</p>
+                <p className="mt-3 text-sm text-slate-600">
+                  <span className="font-medium text-brand-teal">{t.name}</span> — {t.company}
+                </p>
               </div>
             ))}
           </div>
@@ -79,12 +85,14 @@ function TestimonialsSlider() {
         <button
           onClick={prev}
           className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full border bg-white/90 hover:bg-white px-3 py-2 shadow"
+          aria-label="Précédent"
         >
           ‹
         </button>
         <button
           onClick={next}
           className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full border bg-white/90 hover:bg-white px-3 py-2 shadow"
+          aria-label="Suivant"
         >
           ›
         </button>
@@ -95,6 +103,7 @@ function TestimonialsSlider() {
               key={i}
               onClick={() => setIndex(i)}
               className={`h-2 rounded-full transition-all ${index === i ? "w-6 bg-brand-teal" : "w-2 bg-slate-300"}`}
+              aria-label={`Aller au témoignage ${i + 1}`}
             />
           ))}
         </div>
@@ -103,11 +112,13 @@ function TestimonialsSlider() {
   );
 }
 
-// --- PAGE PRINCIPALE ---
+/* =======================
+   Page principale
+   ======================= */
 export default function App() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white via-slate-50 to-white text-brand-ink">
-      {/* HEADER */}
+      {/* Header */}
       <header className="sticky top-0 z-10 bg-white/80 backdrop-blur border-b border-slate-200">
         <div className="max-w-6xl mx-auto h-16 px-4 flex items-center justify-between">
           <a href="#" className="flex items-center gap-2">
@@ -123,16 +134,16 @@ export default function App() {
         </div>
       </header>
 
-      {/* CONTENU */}
+      {/* Main */}
       <main className="max-w-6xl mx-auto px-4">
 
         {/* HERO */}
         <section className="py-16 sm:py-24 text-center">
           <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight">
-            Boostez votre croissance locale avec AdSynergie 🚀
+            Plus de prospects, moins de bla-bla
           </h1>
           <p className="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">
-            Génération de leads, campagnes publicitaires ciblées et sites performants pour entreprises locales.
+            Ads ciblées, pages qui convertissent et reporting transparent — chaque action compte.
           </p>
           <div className="mt-8 flex justify-center gap-4">
             <a href="#contact" className="inline-flex items-center gap-2 bg-brand-teal hover:bg-brand-tealDark text-white px-5 py-3 rounded-xl font-semibold">
@@ -146,30 +157,48 @@ export default function App() {
 
         {/* SERVICES */}
         <section id="services" className="py-16">
-          <h2 className="text-3xl font-bold text-center mb-8">Nos services</h2>
-          <div className="grid sm:grid-cols-3 gap-6">
+          <h2 className="text-3xl font-bold text-center">Nos services</h2>
+          <p className="text-center text-slate-600 mt-3 max-w-2xl mx-auto">
+            De la génération de leads à la visibilité locale : on conçoit, on mesure, on optimise.
+          </p>
+
+          <div className="mt-10 grid sm:grid-cols-3 gap-6">
+            {/* 1 — Génération de leads */}
             <div className="p-6 border rounded-2xl bg-white/80">
-              <h3 className="text-lg font-semibold text-brand-teal">Pack Leads</h3>
-              <ul className="mt-3 space-y-2 text-slate-600 text-sm">
-                <li><Check className="inline w-4 h-4 text-brand-teal" /> Acompte 1099€ (600€ de leads inclus)</li>
-                <li><Check className="inline w-4 h-4 text-brand-teal" /> Leads exclusifs, non revendus</li>
-                <li><Check className="inline w-4 h-4 text-brand-teal" /> Facturation à la performance au-delà</li>
+              <h3 className="text-lg font-semibold text-brand-teal">Génération de leads</h3>
+              <p className="mt-2 text-sm text-slate-600">
+                Vous avez une offre, on apporte des prospects qualifiés (Google & Meta Ads).
+              </p>
+              <ul className="mt-3 space-y-2 text-sm text-slate-700">
+                <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal" /> Ciblage par secteur & zone</li>
+                <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal" /> Landing pages orientées conversion</li>
+                <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal" /> Reporting clair (CPL/CPA)</li>
               </ul>
             </div>
+
+            {/* 2 — Identité digitale & visibilité */}
             <div className="p-6 border rounded-2xl bg-white/80">
-              <h3 className="text-lg font-semibold text-brand-teal">Pack Digital</h3>
-              <ul className="mt-3 space-y-2 text-slate-600 text-sm">
-                <li><Check className="inline w-4 h-4 text-brand-teal" /> Site vitrine ou e-commerce</li>
-                <li><Check className="inline w-4 h-4 text-brand-teal" /> Identité visuelle complète</li>
-                <li><Check className="inline w-4 h-4 text-brand-teal" /> Publicité ciblée locale</li>
+              <h3 className="text-lg font-semibold text-brand-teal">Identité digitale & visibilité</h3>
+              <p className="mt-2 text-sm text-slate-600">
+                Site moderne, visuels cohérents et publicité locale pour être vu et choisi.
+              </p>
+              <ul className="mt-3 space-y-2 text-sm text-slate-700">
+                <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal" /> Site rapide & responsive</li>
+                <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal" /> Branding & créas locales</li>
+                <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal" /> SEO local & fiches Google</li>
               </ul>
             </div>
+
+            {/* 3 — Accompagnement personnalisé */}
             <div className="p-6 border rounded-2xl bg-white/80">
-              <h3 className="text-lg font-semibold text-brand-teal">Accompagnement</h3>
-              <ul className="mt-3 space-y-2 text-slate-600 text-sm">
-                <li><Check className="inline w-4 h-4 text-brand-teal" /> Coaching et stratégie sur mesure</li>
-                <li><Check className="inline w-4 h-4 text-brand-teal" /> Optimisation de campagnes existantes</li>
-                <li><Check className="inline w-4 h-4 text-brand-teal" /> Sur devis personnalisé</li>
+              <h3 className="text-lg font-semibold text-brand-teal">Accompagnement personnalisé</h3>
+              <p className="mt-2 text-sm text-slate-600">
+                Audit, plan média, optimisation continue et coaching — sur devis.
+              </p>
+              <ul className="mt-3 space-y-2 text-sm text-slate-700">
+                <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal" /> Stratégie adaptée à vos objectifs</li>
+                <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal" /> A/B tests & baisse du CPA</li>
+                <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal" /> Reporting mensuel</li>
               </ul>
             </div>
           </div>
@@ -177,34 +206,128 @@ export default function App() {
 
         {/* MÉTHODE */}
         <section id="process" className="py-16">
-          <h2 className="text-3xl font-bold text-center mb-8">Notre méthode</h2>
-          <div className="grid sm:grid-cols-3 gap-6 text-center">
-            <div><h3 className="font-semibold text-brand-teal mb-2">1. Audit & Plan</h3><p>On identifie les opportunités locales et crée une stratégie claire.</p></div>
-            <div><h3 className="font-semibold text-brand-teal mb-2">2. Conception</h3><p>Création de contenus, visuels et intégration technique rapide.</p></div>
-            <div><h3 className="font-semibold text-brand-teal mb-2">3. Suivi & Perf</h3><p>Rapports de performance et ajustements en continu.</p></div>
+          <h2 className="text-3xl font-bold text-center">Notre méthode</h2>
+          <p className="text-center text-brand-teal font-medium mt-2">
+            Chez nous, vos leads ne sont pas partagés — ils vous appartiennent.
+          </p>
+          <div className="mt-8 grid sm:grid-cols-3 gap-6">
+            <div className="p-6 border rounded-2xl bg-white/80">
+              <h3 className="font-semibold text-brand-teal mb-2">1 · Analyse & stratégie</h3>
+              <p className="text-sm text-slate-600">Étude secteur, ciblage local, plan d’action.</p>
+            </div>
+            <div className="p-6 border rounded-2xl bg-white/80">
+              <h3 className="font-semibold text-brand-teal mb-2">2 · Création & personnalisation</h3>
+              <p className="text-sm text-slate-600">Visuels, vidéos dédiées, landing pages.</p>
+            </div>
+            <div className="p-6 border rounded-2xl bg-white/80">
+              <h3 className="font-semibold text-brand-teal mb-2">3 · Leads exclusifs & suivi</h3>
+              <p className="text-sm text-slate-600">Leads 100% à vous + reporting & optimisation.</p>
+            </div>
           </div>
         </section>
 
         {/* TARIFS */}
-        <section id="pricing" className="py-16 text-center">
-          <h2 className="text-3xl font-bold mb-8">Tarifs simples</h2>
-          <p className="text-slate-600">Des offres adaptées à votre budget et à vos besoins.</p>
+        <section id="pricing" className="py-16">
+          <h2 className="text-3xl font-bold text-center">Tarifs & formules</h2>
+          <p className="text-center text-slate-600 mt-3 max-w-2xl mx-auto">
+            Transparence totale. Pas de frais cachés. Leads exclusifs.
+          </p>
+
+          <div className="mt-10 grid sm:grid-cols-3 gap-6">
+            {/* Pack Leads */}
+            <div className="p-6 border rounded-2xl bg-white/80">
+              <p className="text-sm font-medium text-slate-500">Pack Leads</p>
+              <p className="text-3xl font-extrabold mt-2">1 099 €</p>
+              <ul className="mt-4 space-y-2 text-sm text-slate-700">
+                <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal" /> Inclut <strong>600 € de leads exclusifs</strong></li>
+                <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal" /> Création & gestion de la campagne (Google / Meta)</li>
+                <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal" /> Aucun partage ni revente de leads</li>
+                <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal" /> <strong>Au-delà des 600 €</strong> : leads facturés à l’unité selon coût convenu</li>
+              </ul>
+              <p className="mt-4 text-sm text-slate-500 italic">
+                Campagne clé en main — création + gestion + 600 € de génération de leads inclus.
+              </p>
+            </div>
+
+            {/* Pack Visibilité locale */}
+            <div className="p-6 border-2 border-brand-teal rounded-2xl bg-white shadow-sm">
+              <p className="text-sm font-medium text-brand-teal">Pack Visibilité locale</p>
+              <p className="text-3xl font-extrabold mt-2">à partir de 699 €</p>
+              <ul className="mt-4 space-y-2 text-sm text-slate-700">
+                <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal" /> Site vitrine rapide & moderne</li>
+                <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal" /> Publicités locales (Google / Meta)</li>
+                <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal" /> SEO local & suivi</li>
+              </ul>
+              <p className="mt-4 text-sm text-slate-500 italic">
+                Idéal restaurants, salons, commerces de proximité.
+              </p>
+            </div>
+
+            {/* Accompagnement personnalisé */}
+            <div className="p-6 border rounded-2xl bg-white/80">
+              <p className="text-sm font-medium text-slate-500">Accompagnement personnalisé</p>
+              <p className="text-3xl font-extrabold mt-2">Sur devis</p>
+              <ul className="mt-4 space-y-2 text-sm text-slate-700">
+                <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal" /> Audit complet & plan média</li>
+                <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal" /> Optimisation continue & coaching</li>
+                <li className="flex gap-2"><Check className="w-4 h-4 text-brand-teal" /> Reporting mensuel détaillé</li>
+              </ul>
+              <p className="mt-4 text-sm text-slate-500 italic">
+                Pour un suivi premium et durable.
+              </p>
+            </div>
+          </div>
         </section>
 
-        {/* SLIDER TÉMOIGNAGES */}
+        {/* SLIDER AVIS */}
         <TestimonialsSlider />
 
-        {/* CONTACT */}
-        <section id="contact" className="py-16 text-center bg-brand-teal/5 rounded-2xl">
-          <h2 className="text-3xl font-bold mb-4">Contactez-nous</h2>
-          <p className="text-slate-700">
-            <a href="mailto:contact@adsynergie.co.uk" className="text-brand-teal font-medium">contact@adsynergie.co.uk</a>{"  •  "}
-            <a href="tel:+441135550123" className="font-medium">+44 113 555 0123</a>
-          </p>
+        {/* CONTACT — Netlify Forms */}
+        <section id="contact" className="py-16">
+          <h2 className="text-3xl font-bold text-center">Contactez-nous</h2>
+          <form
+            name="contact"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            className="mt-8 max-w-xl mx-auto p-6 border rounded-2xl bg-white/80 space-y-4"
+          >
+            <input type="hidden" name="form-name" value="contact" />
+            <p className="hidden"><label>Ne pas remplir: <input name="bot-field" /></label></p>
+
+            <div className="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium">Prénom</label>
+                <input name="first_name" required className="mt-1 w-full rounded-lg border px-3 py-2" placeholder="Votre prénom" />
+              </div>
+              <div>
+                <label className="block text-sm font-medium">Nom</label>
+                <input name="last_name" required className="mt-1 w-full rounded-lg border px-3 py-2" placeholder="Votre nom" />
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium">Email</label>
+              <input type="email" name="email" required className="mt-1 w-full rounded-lg border px-3 py-2" placeholder="vous@email.com" />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium">Message</label>
+              <textarea name="message" rows="4" className="mt-1 w-full rounded-lg border px-3 py-2" placeholder="Expliquez votre activité et vos objectifs…"></textarea>
+            </div>
+
+            <button className="w-full sm:w-auto bg-brand-teal hover:bg-brand-tealDark text-white px-5 py-3 rounded-xl font-semibold inline-flex items-center gap-2">
+              Envoyer <ArrowRight className="w-4 h-4" />
+            </button>
+
+            <p className="text-center text-sm text-slate-500 mt-2">
+              💡 Réponse sous 24h — leads exclusifs, transparence totale.
+            </p>
+          </form>
         </section>
       </main>
 
-      {/* FOOTER */}
+      {/* Footer */}
       <footer className="border-t border-slate-200 py-6 text-center text-sm text-slate-600">
         © {new Date().getFullYear()} AdSynergie · Tous droits réservés
       </footer>
