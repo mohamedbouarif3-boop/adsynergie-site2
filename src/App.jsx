@@ -122,6 +122,9 @@ export default function App() {
        {/* MÉTHODE */}
 <section id="process" className="py-16">
   <h2 className="text-3xl font-bold text-center">Notre méthode</h2>
+  <p className="text-center text-brand-teal font-medium mt-2">
+    Chez nous, vos leads ne sont pas partagés — ils vous appartiennent.
+  </p>
   <p className="text-center text-slate-600 mt-3 max-w-2xl mx-auto">
     Chez AdSynergie, chaque campagne est unique. On ne vend pas du volume — on construit du sur-mesure pour générer des leads exclusifs et traçables.
   </p>
