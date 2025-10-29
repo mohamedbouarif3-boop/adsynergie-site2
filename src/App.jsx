@@ -246,11 +246,47 @@ export default function App() {
 </section>
 
 
-        {/* TÉMOIGNAGES (placeholder) */}
-        <section className="py-16 text-center">
-          <h2 className="text-3xl font-bold">Ils nous font confiance</h2>
-          <p className="mt-4 text-slate-600">Bientôt ici — retours clients locaux.</p>
-        </section>
+       {/* TÉMOIGNAGES */}
+<section id="testimonials" className="py-16 bg-brand-teal/5">
+  <h2 className="text-3xl font-bold text-center mb-10">Ils en parlent mieux que nous</h2>
+  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto px-4">
+    {[
+      { text: "Excellent retour sur investissement, les leads sont ultra qualifiés.", rating: 5 },
+      { text: "J’ai doublé mes demandes clients en deux semaines, merci AdSynergie !", rating: 5 },
+      { text: "Chaque euro dépensé a été rentable, visibilité x10 en local.", rating: 4 },
+      { text: "Des leads concrets, pas du bla-bla. J’ai signé trois contrats le premier mois.", rating: 5 },
+      { text: "Enfin une agence qui livre du vrai résultat, pas des promesses.", rating: 4 },
+      { text: "Le meilleur investissement pub que j’ai fait depuis que j’ai mon commerce.", rating: 5 },
+      { text: "Les campagnes sont propres, claires, et les leads tombent régulièrement.", rating: 4 },
+      { text: "J’ai gagné plus de clients en 10 jours qu’en 3 mois avant.", rating: 5 },
+      { text: "Rapport qualité / prix imbattable, et les leads sont exclusifs.", rating: 4 },
+      { text: "Ma page Google explose, j’ai une visibilité que j’avais jamais eue avant.", rating: 5 },
+    ].map((item, i) => (
+      <div key={i} className="bg-white rounded-2xl p-6 shadow-sm border border-brand-teal/10">
+        <div className="flex items-center gap-1 text-brand-teal mb-3">
+          {[...Array(5)].map((_, j) => (
+            <svg
+              key={j}
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill={j < item.rating ? "currentColor" : "none"}
+              stroke="currentColor"
+              className={`w-4 h-4 ${j < item.rating ? "text-brand-teal" : "text-slate-300"}`}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1.5}
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.948a1 1 0 00.95.69h4.15c.969 0 1.371 1.24.588 1.81l-3.36 2.442a1 1 0 00-.364 1.118l1.285 3.948c.3.921-.755 1.688-1.54 1.118l-3.36-2.442a1 1 0 00-1.175 0l-3.36 2.442c-.785.57-1.84-.197-1.54-1.118l1.285-3.948a1 1 0 00-.364-1.118L2.075 9.375c-.783-.57-.38-1.81.588-1.81h4.15a1 1 0 00.95-.69l1.286-3.948z"
+              />
+            </svg>
+          ))}
+        </div>
+        <p className="text-slate-700 text-sm italic">“{item.text}”</p>
+      </div>
+    ))}
+  </div>
+</section>
 
         {/* CONTACT — Netlify Forms */}
         <section id="contact" className="py-16">
