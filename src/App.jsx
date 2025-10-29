@@ -82,20 +82,21 @@ function TestimonialsSlider() {
           </div>
         </div>
 
-        <button
-          onClick={prev}
-          className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full border bg-white/90 hover:bg-white px-3 py-2 shadow"
-          aria-label="Précédent"
-        >
-          ‹
-        </button>
-        <button
-          onClick={next}
-          className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full border bg-white/90 hover:bg-white px-3 py-2 shadow"
-          aria-label="Suivant"
-        >
-          ›
-        </button>
+      <button
+  onClick={prev}
+  className="absolute left-6 top-1/2 -translate-y-1/2 rounded-full border bg-white/90 hover:bg-white px-4 py-2 shadow-md transition-transform hover:scale-110"
+  aria-label="Précédent"
+>
+  ‹
+</button>
+<button
+  onClick={next}
+  className="absolute right-6 top-1/2 -translate-y-1/2 rounded-full border bg-white/90 hover:bg-white px-4 py-2 shadow-md transition-transform hover:scale-110"
+  aria-label="Suivant"
+>
+  ›
+</button>
+
 
         <div className="flex justify-center gap-2 mt-6">
           {TESTIMONIALS.map((_, i) => (
