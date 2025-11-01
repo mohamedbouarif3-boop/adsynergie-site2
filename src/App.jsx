@@ -1,279 +1,78 @@
-// src/App.jsx
-import React, { useState, useEffect, useRef } from "react"; 
-import { ArrowRight, Check, ChevronLeft, ChevronRight, Mail } from "lucide-react";
-import "./index.css";
+12:58:04 AM: Failed during stage 'building site': Build script returned non-zero exit code: 2 (https://ntl.fyi/exit-code-2)
+12:58:03 AM: Netlify Build                                                 
+12:58:03 AM: ────────────────────────────────────────────────────────────────
+12:58:03 AM: ​
+12:58:03 AM: ❯ Version
+12:58:03 AM:   @netlify/build 35.2.11
+12:58:03 AM: ​
+12:58:03 AM: ❯ Flags
+12:58:03 AM:   accountId: 69069df5351e068cfa798b5a
+12:58:03 AM:   baseRelDir: true
+12:58:03 AM:   buildId: 69069e73d8051371aa5f6ae8
+12:58:03 AM:   deployId: 69069e73d8051371aa5f6aea
+12:58:03 AM: ​
+12:58:03 AM: ❯ Current directory
+12:58:03 AM:   /opt/build/repo
+12:58:03 AM: ​
+12:58:03 AM: ❯ Config file
+12:58:03 AM:   /opt/build/repo/netlify.toml
+12:58:03 AM: ​
+12:58:03 AM: ❯ Context
+12:58:03 AM:   production
+12:58:03 AM: ​
+12:58:03 AM: build.command from netlify.toml                               
+12:58:03 AM: ────────────────────────────────────────────────────────────────
+12:58:03 AM: ​
+12:58:03 AM: $ npm run build
+12:58:03 AM: > adsynergie-site@0.0.1 build
+12:58:03 AM: > vite build
+12:58:03 AM: vite v5.4.21 building for production...
+12:58:03 AM: transforming...
+12:58:04 AM: ✓ 4 modules transformed.
+12:58:04 AM: x Build failed in 360ms
+12:58:04 AM: error during build:
+12:58:04 AM: [vite:esbuild] Transform failed with 1 error:
+12:58:04 AM: /opt/build/repo/src/App.jsx:280:0: ERROR: Unterminated string literal
+12:58:04 AM: file: /opt/build/repo/src/App.jsx:280:0
+12:58:04 AM: 
+12:58:04 AM: Unterminated string literal
+12:58:04 AM: 278|          <section ref={ref} className="py-10">
+12:58:04 AM: 279|              <div className={`max-w-4xl mx-auto grid grid-cols-3 gap
+280|  
+   |  ^
 
-/* =======================
-   Données
-   ======================= */
-
-// ⚠️ REMPLACEZ CETTE ADRESSE PAR VOTRE VRAIE ADRESSE EMAIL
-const CONTACT_EMAIL = "contact@adsynergie.com";
-
-// Témoignages (avec noms + entreprises)
-const TESTIMONIALS = [
-  { text: "Excellent retour sur investissement, les leads sont ultra qualifiés.", rating: 5, author: "Sophie M.", company: "Bella Pasta — Leeds" },
-  { text: "Des leads concrets, pas du bla-bla. Trois contrats signés le 1er mois.", rating: 5, author: "Lucas R.", company: "LR Coaching — Leeds" },
-  { text: "Chaque euro dépensé a été rentable. Visibilité multipliée par dix localement.", rating: 4, author: "Emma P.", company: "GreenMind Studio — Leeds" },
-  { text: "Campagne bien ciblée, service pro et réactif. Les résultats sont mesurables.", rating: 5, author: "Thomas L.", company: "PureFit Gym — Headingley" },
-  { text: "Une équipe sérieuse, du concret. Les leads arrivent chaque semaine.", rating: 5, author: "Claire G.", company: "Beauty Loft — Leeds Centre" },
-  { text: "Le meilleur investissement pub que j’ai fait. Le ROI est bluffant.", rating: 4, author: "Hugo D.", company: "AutoLeeds Garage — Armley" },
-  { text: "Campagne fluide, super communication et un vrai suivi des performances.", rating: 5, author: "Julie C.", company: "Café du Parc — Leeds" },
-  { text: "Grâce à AdSynergie, mon salon est complet trois semaines à l’avance.", rating: 5, author: "Mélanie S.", company: "Studio Liss — Chapel Allerton" },
-  { text: "Des leads exclusifs et pertinents, sans revente. Très professionnel.", rating: 4, author: "Romain B.", company: "TechFix Solutions — Leeds" },
-  { text: "Une visibilité que je n’avais jamais eue avant. Excellent rapport qualité-prix.", rating: 5, author: "Nadia K.", company: "Leeds Artisan Bakery — Beeston" },
-];
-
-// Services
-const SERVICES = [
-  {
-    title: "Génération de leads",
-    desc: "Prospects qualifiés via Google & Meta Ads, selon votre secteur et zone.",
-    bullets: [
-      "Ciblage précis (secteur, zone, mots-clés)",
-      "Landing pages qui convertissent",
-      "Reporting clair (CPL/CPA)",
-    ],
-  },
-  {
-    title: "Identité digitale & visibilité",
-    desc: "Site rapide, branding cohérent et publicité locale pour être vu et choisi.",
-    bullets: [
-      "Site moderne & responsive",
-      "Branding & créas locales",
-      "SEO local & fiche Google",
-    ],
-  },
-  {
-    title: "Accompagnement personnalisé",
-    desc: "Audit, plan média, optimisation continue et coaching — sur devis.",
-    bullets: [
-      "Stratégie orientée objectifs",
-      "A/B tests & baisse du CPA",
-      "Reporting mensuel",
-    ],
-  },
-];
-
-// Tarifs
-const PRICING = [
-  {
-    badge: "Pack Leads",
-    price: "1 099 €",
-    bullets: [
-      "Inclut 600 € de leads exclusifs",
-      "Création & gestion (Google / Meta)",
-      "Aucune revente de leads",
-      "Au-delà des 600 € : leads facturés à l’unité (coût convenu)",
-    ],
-    highlight: false,
-  },
-  {
-    badge: "Visibilité locale",
-    price: "à partir de 699 €",
-    bullets: [
-      "Site vitrine rapide & moderne",
-      "Publicités locales (Google / Meta)",
-      "SEO local & suivi",
-    ],
-    highlight: true,
-  },
-  {
-    badge: "Accompagnement",
-    price: "Sur devis",
-    bullets: [
-      "Audit complet & plan média",
-      "Optimisation continue & coaching",
-      "Reporting mensuel détaillé",
-    ],
-    highlight: false,
-  },
-];
-
-// Statistiques Clés (remplacer par VOS vrais chiffres)
-const STATS = [
-    { value: "30", label: "Contrats signés" },
-    { value: "95", label: "Leads Exclusifs" },
-    { value: "4.9", label: "Note Clients (Avis)" },
-];
-
-
-/* =======================
-   Helpers carrousel (dots, swipe, flèches) et Animations
-   ======================= */
-
-// Hook personnalisé pour l'animation au scroll
-function useInView(options = { threshold: 0.1, once: true }) {
-    const ref = useRef(null);
-    const [inView, setInView] = useState(false);
-
-    useEffect(() => {
-        const element = ref.current;
-        if (!element || typeof IntersectionObserver === 'undefined') return;
-
-        const observer = new IntersectionObserver(([entry]) => {
-            if (entry.isIntersecting) {
-                setInView(true);
-                if (options.once) {
-                    observer.unobserve(element);
-                }
-            } else if (!options.once) {
-                setInView(false); // Réinitialiser si non 'once'
-            }
-        }, options);
-
-        observer.observe(element);
-
-        return () => {
-            if (element) observer.unobserve(element);
-        };
-    }, [options.threshold, options.once]);
-
-    return [ref, inView];
-}
-
-function Dots({ total, index, setIndex }) {
-  return (
-    <div className="flex justify-center gap-2 mt-6">
-      {Array.from({ length: total }).map((_, i) => (
-        <button
-          key={i}
-          onClick={() => setIndex(i)}
-          className={`h-3 rounded-full transition-all ${index === i ? "w-7 bg-brand-teal" : "w-3 bg-slate-300"}`}
-          aria-label={`Aller à l’élément ${i + 1}`}
-        />
-      ))}
-    </div>
-  );
-}
-
-function useSwipe(total, setIndex) {
-  const startXRef = useRef(null);
-  const onTouchStart = (e) => { startXRef.current = e.touches[0].clientX; };
-  const onTouchEnd = (e) => {
-    if (startXRef.current == null) return;
-    const delta = e.changedTouches[0].clientX - startXRef.current;
-    if (Math.abs(delta) > 40) {
-      setIndex((i) => (delta < 0 ? (i + 1) % total : (i - 1 + total) % total));
-    }
-    startXRef.current = null;
-  };
-  return { onTouchStart, onTouchEnd };
-}
-
-function ArrowButtons({ prev, next }) {
-  // cachées sur mobile
-  return (
-    <>
-      <button
-        onClick={prev}
-        className="hidden sm:grid absolute top-1/2 -translate-y-1/2 -left-12 rounded-full border bg-white shadow-lg h-10 w-10 place-items-center hover:scale-105 transition"
-        aria-label="Précédent"
-      >
-        <ChevronLeft className="w-5 h-5 text-slate-700" />
-      </button>
-      <button
-        onClick={next}
-        className="hidden sm:grid absolute top-1/2 -translate-y-1/2 -right-12 rounded-full border bg-white shadow-lg h-10 w-10 place-items-center hover:scale-105 transition"
-        aria-label="Suivant"
-      >
-        <ChevronRight className="w-5 h-5 text-slate-700" />
-      </button>
-    </>
-  );
-}
-
-/* =======================
-   Composants de page
-   ======================= */
-
-// Bandeau de Réassurance
-function TrustBanner() {
-    const TRUST_POINTS = [
-        "Leads qualifiés garantis",
-        "Campagnes ciblées localement",
-        "Transparence totale (CPA/CPL)",
-    ];
-
-    return (
-        <section className="py-8 px-4 sm:py-12 bg-white border-y border-brand-teal/20">
-            <div className="max-w-4xl mx-auto flex flex-wrap justify-center gap-6 sm:gap-12">
-                {TRUST_POINTS.map((point, i) => (
-                    <div key={i} className="flex items-center gap-2 text-sm sm:text-base font-semibold text-slate-700">
-                        <Check className="w-5 h-5 text-brand-teal flex-shrink-0" />
-                        {point}
-                    </div>
-                ))}
-            </div>
-        </section>
-    );
-}
-
-// Composant de statistique animée
-function AnimatedStat({ value, label, startAnimation }) {
-    // Gestion des valeurs non numériques (ex: 4.9)
-    const isDecimal = value.includes('.');
-    const numericPart = parseFloat(value);
-    const [currentValue, setCurrentValue] = useState(0);
-    const duration = 1500; 
-
-    useEffect(() => {
-        if (startAnimation) {
-            let startTime = null;
-            const animate = (timestamp) => {
-                if (!startTime) startTime = timestamp;
-                const progress = timestamp - startTime;
-                const ratio = Math.min(progress / duration, 1);
-                
-                let newValue;
-                if (isDecimal) {
-                    newValue = (ratio * numericPart);
-                } else {
-                    newValue = Math.floor(ratio * numericPart);
-                }
-                
-                setCurrentValue(newValue);
-                
-                if (ratio < 1) {
-                    requestAnimationFrame(animate);
-                } else {
-                    setCurrentValue(numericPart);
-                }
-            };
-            requestAnimationFrame(animate);
-        }
-    }, [startAnimation, numericPart, isDecimal]);
-
-    // Formatage de la valeur pour l'affichage
-    let displayValue;
-    if (value.includes('+')) {
-        displayValue = `+${Math.round(currentValue)}`;
-    } else if (value.includes('/')) {
-         displayValue = `${currentValue.toFixed(1)}${value.substring(value.indexOf('/'))}`;
-    } else if (isDecimal) {
-        displayValue = currentValue.toFixed(1);
-    } else {
-        displayValue = Math.round(currentValue);
-    }
-    
-    // Ajout du suffixe si nécessaire (ex: % pour 95%)
-    if (label.includes('Exclusifs') && value === '95') { 
-        displayValue += '%';
-    }
-
-
-    return (
-        <div className="p-4 bg-brand-teal/10 rounded-xl">
-            <p className="text-3xl sm:text-4xl font-extrabold text-brand-teal">{displayValue}</p>
-            <p className="text-sm sm:text-base font-medium text-slate-700 mt-1">{label}</p>
-        </div>
-    );
-}
-
-// Stats Clés mises à jour
-function KeyStats() {
-    const [ref, inView] = useInView({ threshold: 0.2 });
-
-    return (
-        <section ref={ref} className="py-10">
-            <div className={`max-w-4xl mx-auto grid grid-cols-3 gap
+    at failureErrorWithLog (/opt/build/repo/node_modules/esbuild/lib/main.js:1472:15)
+    at /opt/build/repo/node_modules/esbuild/lib/main.js:755:50
+    at responseCallbacks.<computed> (/opt/build/repo/node_modules/esbuild/lib/main.js:622:9)
+    at handleIncomingPacket (/opt/build/repo/node_modules/esbuild/lib/main.js:677:12)
+    at Socket.readFromStdout (/opt/build/repo/node_modules/esbuild/lib/main.js:600:7)
+    at Socket.emit (node:events:519:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+​
+12:58:04 AM: "build.command" failed                                        
+12:58:04 AM: ────────────────────────────────────────────────────────────────
+12:58:04 AM: ​
+12:58:04 AM:   Error message
+12:58:04 AM:   Command failed with exit code 1: npm run build (https://ntl.fyi/exit-code-1)
+12:58:04 AM: ​
+12:58:04 AM:   Error location
+12:58:04 AM:   In build.command from netlify.toml:
+12:58:04 AM:   npm run build
+12:58:04 AM: ​
+12:58:04 AM:   Resolved config
+12:58:04 AM:   build:
+12:58:04 AM:     command: npm run build
+12:58:04 AM:     commandOrigin: config
+12:58:04 AM:     publish: /opt/build/repo/dist
+12:58:04 AM:     publishOrigin: config
+12:58:04 AM:   redirects:
+12:58:04 AM:     - from: /*
+      status: 200
+      to: /index.html
+  redirectsOrigin: config
+12:58:04 AM: Build failed due to a user error: Build script returned non-zero exit code: 2
+12:58:04 AM: Failing build: Failed to build site
+12:58:04 AM: Finished processing build request in 15.392s
